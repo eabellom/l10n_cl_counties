@@ -34,7 +34,9 @@ class res_partner(osv.osv):
     
     _inherit = 'res.partner'
     _columns = {
-        'city': fields.many2one("res.country.state.city", 'City', domain="[('state_id','=',state_id),('type','=','normal')]"),
+        'city': fields.many2one(
+            "res.country.state.city", 'City',
+            domain="[('state_id','=',state_id), ('type','=','normal')]"),
         }
         
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

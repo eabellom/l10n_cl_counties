@@ -10,7 +10,12 @@
             <field name='arch' type='xml'>
                 <field name="city" position="replace"/>
                 <field name="state_id" position="after">
-                    <field name="city" class="oe_no_button" placeholder="City" style="width: 100%" options='{"no_open": True}' domain="[('state_id','=',state_id),('type','=','normal')]"/>
+                    <field name="city" class="oe_no_button"
+                           placeholder="City" style="width: 100%"
+                           options='{"no_open": True}'
+                           domain="[
+                            ('state_id','=',state_id),
+                            ('type','=','normal')]"/>
                 </field>
             </field>
         </record>
