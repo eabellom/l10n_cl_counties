@@ -30,13 +30,25 @@
 from openerp.osv import fields, osv
 
 
-class res_partner(osv.osv):
-    
+class res_partner(models.Model):
+
     _inherit = 'res.partner'
-    _columns = {
-        'city': fields.many2one(
-            "res.country.state.city", 'City',
-            domain="[('state_id','=',state_id), ('type','=','normal')]"),
-        }
-        
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
+
+    city_id = fields.Many2one("res.country.state.city", 'City', domain="[('state_id','=',state_id),('type','=','normal')]")
+
+    @api.multi
+    def _asign_city(self, source):
+        if self.city_id:
+	       return {'value':{'city': self.city_id.name}}
+
+class res_company(models.Model):
+
+    _inherit = 'res.company'
+
+    city_id = fields.Many2one("res.country.state.city", 'City', domain="[('state_id','=',state_id),('type','=','normal')]")
+
+    @api.multi
+    def _asign_city(self, source):
+        if self.city_id:
+	       return {'value':{'city': self.city_id.name}}
+

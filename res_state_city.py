@@ -82,7 +82,7 @@ class res_state_city(osv.osv):
             'code': fields.char('City Code', size=32,help='The city code.\n', required=True),
             'complete_name': fields.function(_name_get_fnc, method=True, type="char", string='Complete Name', fnct_search=complete_name_search),
             'country_id': fields.many2one('res.country', 'Country', required=True),
-            'state_id': fields.many2one('res.country.state','State', select=True, domain="[('country_id','=',country_id),('type','=','normal')]"),
+            'state_id': fields.many2one('res.country.state','State', index=True, domain="[('country_id','=',country_id),('type','=','normal')]"),
             'type': fields.selection([('view','View'), ('normal','Normal')], 'Type'),
         }
     _defaults = {
