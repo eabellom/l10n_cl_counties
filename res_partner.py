@@ -27,7 +27,7 @@
 #
 ##############################################################################
 
-from openerp.osv import fields, osv
+from openerp import models, fields, api
 
 
 class res_partner(models.Model):
